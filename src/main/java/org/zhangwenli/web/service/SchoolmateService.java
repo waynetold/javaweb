@@ -10,8 +10,7 @@ public class SchoolmateService {
     private SchoolmateMapper schoolmateMapper;
 
     @Autowired
-    public void setSchoolmateMapper(SchoolmateMapper schoolmateMapper) {
+    public SchoolmateService(SchoolmateMapper schoolmateMapper) {
         this.schoolmateMapper = schoolmateMapper;
     }
-
 }

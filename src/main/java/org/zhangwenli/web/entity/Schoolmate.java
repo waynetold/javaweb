@@ -6,7 +6,6 @@ public class Schoolmate {
 
     private String id;
 
-
     private Instant created;
 
     private Instant updated;

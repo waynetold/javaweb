@@ -5,7 +5,26 @@ CREATE DATABASE campus
 USE campus;
 
 CREATE TABLE schoolmate (
-  id VARCHAR(36) DEFAULT UUID() COMMENT '主键',
-  created DATETIME DEFAULT NOW() COMMENT '创建时间',
-  updated DATETIME DEFAULT NOW() COMMENT '更新时间'
-)
+  id INT PRIMARY KEY AUTO_INCREMENT COMMENT '主键',
+  name VARCHAR(32) NOT NULL COMMENT '姓名',
+
+  phone VARCHAR(20) COMMENT '手机',
+  qq VARCHAR(16) COMMENT 'QQ号码',
+  wechat VARCHAR(32) COMMENT '微信号',
+  college VARCHAR(32) COMMENT '学院',
+  class VARCHAR(20) COMMENT '班级',
+  address VARCHAR(32) COMMENT '住址',
+  graduation_year VARCHAR(32) COMMENT '毕业年份',
+
+  created_at DATETIME NOT NULL DEFAULT NOW() COMMENT '创建时间',
+  updated_at DATETIME NOT NULL DEFAULT NOW() COMMENT '更新时间'
+);
+
+CREATE TABLE user (
+  id INT PRIMARY KEY AUTO_INCREMENT COMMENT '主键',
+  name VARCHAR(32) NOT NULL COMMENT '名字',
+  role VARCHAR(32) NOT NULL COMMENT '用户角色，教师，管理员',
+
+  created_at DATETIME NOT NULL DEFAULT NOW() COMMENT '创建时间',
+  updated_at DATETIME NOT NULL DEFAULT NOW() COMMENT '更新时间'
+);

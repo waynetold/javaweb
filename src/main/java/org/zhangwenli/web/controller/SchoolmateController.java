@@ -11,7 +11,7 @@ public class SchoolmateController {
     private SchoolmateService schoolmateService;
 
     @Autowired
-    public void setSchoolmateService(SchoolmateService schoolmateService) {
+    public SchoolmateController(SchoolmateService schoolmateService) {
         this.schoolmateService = schoolmateService;
     }
 
