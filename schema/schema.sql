@@ -4,7 +4,7 @@ CREATE DATABASE campus
 
 USE campus;
 
-CREATE TABLE schoolmate (
+CREATE TABLE IF NOT EXISTS schoolmate (
   id INT PRIMARY KEY AUTO_INCREMENT COMMENT '主键',
   name VARCHAR(32) NOT NULL COMMENT '姓名',
 
@@ -12,7 +12,7 @@ CREATE TABLE schoolmate (
   qq VARCHAR(16) COMMENT 'QQ号码',
   wechat VARCHAR(32) COMMENT '微信号',
   college VARCHAR(32) COMMENT '学院',
-  class VARCHAR(20) COMMENT '班级',
+  the_class VARCHAR(20) COMMENT '班级',
   address VARCHAR(32) COMMENT '住址',
   graduation_year VARCHAR(32) COMMENT '毕业年份',
 
@@ -20,10 +20,11 @@ CREATE TABLE schoolmate (
   updated_at DATETIME NOT NULL DEFAULT NOW() COMMENT '更新时间'
 );
 
-CREATE TABLE user (
+CREATE TABLE IF NOT EXISTS user (
   id INT PRIMARY KEY AUTO_INCREMENT COMMENT '主键',
   name VARCHAR(32) NOT NULL COMMENT '名字',
-  role VARCHAR(32) NOT NULL COMMENT '用户角色，教师，管理员',
+  password VARCHAR(32) NOT NULL COMMENT '密码',
+  role VARCHAR(32) NOT NULL COMMENT '用户角色：administrator, teacher',
 
   created_at DATETIME NOT NULL DEFAULT NOW() COMMENT '创建时间',
   updated_at DATETIME NOT NULL DEFAULT NOW() COMMENT '更新时间'

@@ -13,3 +13,4 @@ target
 *.settings
 /**/*.iml
 .gradle/
+*.pdf

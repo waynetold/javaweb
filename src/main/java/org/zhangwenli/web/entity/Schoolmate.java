@@ -6,9 +6,25 @@ public class Schoolmate {
 
     private String id;
 
-    private Instant created;
+    private String name;
 
-    private Instant updated;
+    private String phone;
+
+    private String qq;
+
+    private String wechat;
+
+    private String college;
+
+    private String theClass;
+
+    private String address;
+
+    private String graduationYear;
+
+    private Instant createdAt;
+
+    private Instant updatedAt;
 
     public String getId() {
         return id;
@@ -18,22 +34,83 @@ public class Schoolmate {
         this.id = id;
     }
 
-
-    public Instant getCreated() {
-        return created;
+    public String getName() {
+        return name;
     }
 
-    public void setCreated(Instant created) {
-        this.created = created;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Instant getUpdated() {
-        return updated;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setUpdated(Instant updated) {
-        this.updated = updated;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
+    public String getQq() {
+        return qq;
+    }
 
+    public void setQq(String qq) {
+        this.qq = qq;
+    }
+
+    public String getWechat() {
+        return wechat;
+    }
+
+    public void setWechat(String wechat) {
+        this.wechat = wechat;
+    }
+
+    public String getCollege() {
+        return college;
+    }
+
+    public void setCollege(String college) {
+        this.college = college;
+    }
+
+    public String getTheClass() {
+        return theClass;
+    }
+
+    public void setTheClass(String theClass) {
+        this.theClass = theClass;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getGraduationYear() {
+        return graduationYear;
+    }
+
+    public void setGraduationYear(String graduationYear) {
+        this.graduationYear = graduationYear;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Instant getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Instant updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 }

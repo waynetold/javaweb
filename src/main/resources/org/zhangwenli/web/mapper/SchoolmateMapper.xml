@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.zhangwenli.web.mapper.SchoolmateMapper">
+    <insert id="create">
+        INSERT INTO schoolmate (
+            name,
+            phone,
+            qq,
+            wechat,
+            college,
+            the_class,
+            address,
+            graduation_year
+        ) VALUE (
+            #{schoolmate.name},
+            #{schoolmate.phone},
+            #{schoolmate.qq},
+            #{schoolmate.wechat},
+            #{schoolmate.college},
+            #{schoolmate.theClass},
+            #{schoolmate.address},
+            #{schoolmate.graduationYear}
+        );
+    </insert>
+    <update id="updateById">
+        UPDATE schoolmate
+        SET
+            name           = #{schoolmate.name},
+            phone          = #{schoolmate.phone},
+            qq             = #{schoolmate.qq},
+            wechat         = #{schoolmate.wechat},
+            college        = #{schoolmate.college},
+            theClass       = #{schoolmate.theClass},
+            address        = #{schoolmate.address},
+            graduationYear = #{schoolmate.graduationYear},
+            updated_at     = NOW()
+        WHERE id = #{id}
+    </update>
+    <delete id="deleteById">
+        DELETE FROM schoolmate
+        WHERE id = #{id}
+    </delete>
+    <select id="findAll" resultType="org.zhangwenli.web.entity.Schoolmate">
+        SELECT
+        id,
+        name,
+        phone,
+        qq,
+        wechat,
+        college,
+        the_class AS theClass,
+        address,
+        graduation_year AS graduationYear,
+        created_at AS createdAt,
+        updated_at AS updatedAt
+        FROM schoolmate
+        WHERE TRUE
+        <if test="schoolmate.name != null">
+            AND name LIKE CONCAT(CONCAT('%', #{schoolmate.name}), '%')
+        </if>
+        LIMIT #{limit}
+        OFFSET #{offset}
+    </select>
+</mapper>
