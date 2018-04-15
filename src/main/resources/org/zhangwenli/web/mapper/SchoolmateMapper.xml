@@ -61,4 +61,13 @@
         LIMIT #{limit}
         OFFSET #{offset}
     </select>
+    <select id="count" resultType="java.lang.Integer">
+        SELECT
+        COUNT(*)
+        FROM schoolmate
+        WHERE TRUE
+        <if test="schoolmate.name != null">
+            AND name LIKE CONCAT(CONCAT('%', #{schoolmate.name}), '%')
+        </if>
+    </select>
 </mapper>

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.zhangwenli.web.entity.Schoolmate;
 import org.zhangwenli.web.entity.User;
 import org.zhangwenli.web.service.SchoolmateService;
+import org.zhangwenli.web.util.Page;
 import springfox.documentation.annotations.ApiIgnore;
 
 import java.util.List;
@@ -60,8 +61,8 @@ public class SchoolmateController {
                                   @RequestParam(name = "name", required = false) String name) {
         Schoolmate schoolmate = new Schoolmate();
         schoolmate.setName(name);
-        List<Schoolmate> l = this.schoolmateService.list(page, size, schoolmate);
-        return ResponseEntity.ok(l);
+        Page p = this.schoolmateService.list(page, size, schoolmate);
+        return ResponseEntity.ok(p);
     }
 
     private void checkPermission(User user) {

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.zhangwenli.web.entity.Schoolmate;
 import org.zhangwenli.web.mapper.SchoolmateMapper;
+import org.zhangwenli.web.util.Page;
 
 import java.util.List;
 
@@ -26,10 +27,12 @@ public class SchoolmateService {
     }
 
     public void updateOneById(String id, Schoolmate schoolmate) {
-        this.schoolmateMapper.updateById(id,schoolmate);
+        this.schoolmateMapper.updateById(id, schoolmate);
     }
 
-    public List<Schoolmate> list(Integer page, Integer size, Schoolmate schoolmate) {
-        return this.schoolmateMapper.findAll(size, (page - 1) * size, schoolmate);
+    public Page list(Integer page, Integer size, Schoolmate schoolmate) {
+        List<Schoolmate> l = this.schoolmateMapper.findAll(size, (page - 1) * size, schoolmate);
+        Integer c = this.schoolmateMapper.count(schoolmate);
+        return new Page<>(c, l);
     }
 }

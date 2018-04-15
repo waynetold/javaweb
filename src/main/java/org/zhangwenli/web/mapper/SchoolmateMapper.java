@@ -19,4 +19,5 @@ public interface SchoolmateMapper {
 
     void deleteById(@Param("id") String id);
 
+    Integer count(@Param("schoolmate") Schoolmate schoolmate);
 }
