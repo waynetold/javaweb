@@ -5,10 +5,46 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>校友管理系统</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.0/css/bulma.min.css">
+    <title>校友管理系统：登录</title>
 </head>
 <body>
 <h1>校友管理系统</h1>
 
+<form>
+    <input type="text" name="username" title="username"/>
+    <input type="password" name="password" title="password"/>
+    <input type="submit" onclick="login(event)"/>
+</form>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+<script>
+    async function login(event) {
+        event.preventDefault()
+        const f =  event.target.form
+        axios.post()
+        try {
+            await axios.post('/api/user/login', new FormData(f))
+            alert("登陆成功！")
+            window.location = '/list.html'
+        } catch (error) {
+            alert("用户名或密码错误，请重试！")
+        }
+    }
+    async function checkUser() {
+        try {
+            const res = await axios.get('/api/user/me')
+            alert("当前用户：" + res.data.name)
+            window.location = '/list.html'
+        } catch(error){
+            alert("请登陆！")
+        }
+    }
+    document.onreadystatechange = function () {
+        if (document.readyState === 'interactive') {
+            checkUser()
+        }
+    }
+</script>
 </body>
 </html>
