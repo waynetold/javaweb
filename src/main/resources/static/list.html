@@ -34,7 +34,7 @@
 
     async function list(page, size, name) {
         try {
-            const res = await axios.get("/api/schoolmate/list")
+            const res = await axios.get('/api/schoolmate/list')
             const schoolmates = res.data
             let content = tableHeader
             for(const l of schoolmates) {

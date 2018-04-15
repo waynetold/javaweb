@@ -22,7 +22,6 @@
     async function login(event) {
         event.preventDefault()
         const f =  event.target.form
-        axios.post()
         try {
             await axios.post('/api/user/login', new FormData(f))
             alert("登陆成功！")
