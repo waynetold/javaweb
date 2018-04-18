@@ -1,0 +1,7 @@
+#!/bin/sh
+cd $(cd "$(dirname "$0")";pwd)
+cd ..
+echo $$ > process.pid
+echo 'Starting'
+echo $@
+exec java -jar target/java-web-0.0.1.jar $@

@@ -1,0 +1,6 @@
+#!/bin/sh
+cd $(cd "$(dirname "$0")";pwd)
+cd ..
+cat process.pid | awk '{print "kill "$1}'| sh
+echo 'Stopping'
+rm process.pid
