@@ -11,7 +11,7 @@
             the_class,
             address,
             graduation_year
-        ) VALUE (
+        ) VALUES (
             #{schoolmate.name},
             #{schoolmate.phone},
             #{schoolmate.qq},
@@ -25,15 +25,15 @@
     <update id="updateById">
         UPDATE schoolmate
         SET
-            name           = #{schoolmate.name},
-            phone          = #{schoolmate.phone},
-            qq             = #{schoolmate.qq},
-            wechat         = #{schoolmate.wechat},
-            college        = #{schoolmate.college},
-            theClass       = #{schoolmate.theClass},
-            address        = #{schoolmate.address},
-            graduationYear = #{schoolmate.graduationYear},
-            updated_at     = NOW()
+            name            = #{schoolmate.name},
+            phone           = #{schoolmate.phone},
+            qq              = #{schoolmate.qq},
+            wechat          = #{schoolmate.wechat},
+            college         = #{schoolmate.college},
+            the_class       = #{schoolmate.theClass},
+            address         = #{schoolmate.address},
+            graduation_year = #{schoolmate.graduationYear},
+            updated_at      = CURRENT_TIMESTAMP
         WHERE id = #{id}
     </update>
     <delete id="deleteById">
@@ -50,14 +50,13 @@
         college,
         the_class AS theClass,
         address,
-        graduation_year AS graduationYear,
-        created_at AS createdAt,
-        updated_at AS updatedAt
+        graduation_year AS graduationYear
         FROM schoolmate
-        WHERE TRUE
-        <if test="schoolmate.name != null">
-            AND name LIKE CONCAT(CONCAT('%', #{schoolmate.name}), '%')
-        </if>
+        <where>
+            <if test="schoolmate.name != null">
+                name LIKE CONCAT(CONCAT('%', #{schoolmate.name}), '%')
+            </if>
+        </where>
         LIMIT #{limit}
         OFFSET #{offset}
     </select>
@@ -65,9 +64,10 @@
         SELECT
         COUNT(*)
         FROM schoolmate
-        WHERE TRUE
-        <if test="schoolmate.name != null">
-            AND name LIKE CONCAT(CONCAT('%', #{schoolmate.name}), '%')
-        </if>
+        <where>
+            <if test="schoolmate.name != null">
+                name LIKE CONCAT(CONCAT('%', #{schoolmate.name}), '%')
+            </if>
+        </where>
     </select>
 </mapper>
