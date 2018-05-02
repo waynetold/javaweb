@@ -54,7 +54,7 @@
         FROM schoolmate
         <where>
             <if test="schoolmate.name != null">
-                name LIKE CONCAT(CONCAT('%', #{schoolmate.name}), '%')
+                name LIKE '%${schoolmate.name}%'
             </if>
         </where>
         LIMIT #{limit}
@@ -66,7 +66,7 @@
         FROM schoolmate
         <where>
             <if test="schoolmate.name != null">
-                name LIKE CONCAT(CONCAT('%', #{schoolmate.name}), '%')
+                name LIKE '%${schoolmate.name}%'
             </if>
         </where>
     </select>

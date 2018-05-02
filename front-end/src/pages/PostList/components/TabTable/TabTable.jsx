@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import IceContainer from '@icedesign/container';
-import { Tab } from '@icedesign/base';
+import { Tab, Search } from '@icedesign/base';
 import CustomTable from './components/CustomTable';
 import EditDialog from './components/EditDialog';
 import DeleteBalloon from './components/DeleteBalloon';
@@ -158,11 +158,32 @@ export default class TabTable extends Component {
     });
   };
 
+  onSearch = (e) =>{
+    axios
+    .get(`/api/schoolmate/list?size=1000&name=${e.key}`)
+    .then((response) => {
+      this.setState({
+        dataSource: { all: response.data.list },
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
+
+
   render() {
     const { dataSource } = this.state;
     return (
       <div className="tab-table">
         <IceContainer style={{ padding: '0 20px 20px' }}>
+          <Search
+            style={styles.search}
+            type="secondary"
+            placeholder="搜索"
+            searchText=""
+            onSearch={this.onSearch}
+          />
           <Tab onChange={this.handleTabChange}>
             {tabs.map((item) => {
               return (
@@ -181,3 +202,37 @@ export default class TabTable extends Component {
     );
   }
 }
+
+const styles = {
+  complexTabTableOperation: {
+    lineHeight: '28px',
+  },
+  titleWrapper: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  title: {
+    marginLeft: '10px',
+    lineHeight: '20px',
+  },
+  operation: {
+    marginRight: '12px',
+    textDecoration: 'none',
+  },
+  tabExtra: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  search: {
+    marginTop: 17,
+    marginLeft: 10,
+  },
+  tabCount: {
+    marginLeft: '5px',
+    color: '#3080FE',
+  },
+  pagination: {
+    textAlign: 'right',
+    paddingTop: '26px',
+  },
+};

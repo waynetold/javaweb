@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CustomBreadcrumb from '../../components/CustomBreadcrumb';
 import TabTable from './components/TabTable';
+import { Tab ,Search} from '@icedesign/base';
 
 import './PostList.scss';
 
@@ -20,8 +21,10 @@ export default class PostList extends Component {
     return (
       <div className="post-list-page">
         <CustomBreadcrumb dataSource={breadcrumb} />
+
         <TabTable />
       </div>
     );
   }
 }
+
