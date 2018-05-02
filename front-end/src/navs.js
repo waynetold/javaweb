@@ -83,9 +83,11 @@ const customAsideNavs = [
 ];
 
 const user = sessionStorage.getItem('user')
-const role = JSON.parse(user).role
-if (role !== 'administrator') {
-  delete customAsideNavs[1].children[1]
+if (user) {
+  const role = JSON.parse(user).role
+  if (role !== 'administrator') {
+    delete customAsideNavs[1].children[1]
+  }
 }
 
 function transform(navs) {
